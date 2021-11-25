@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861669867723",
+    "project_id": "ibdf-61604",
+    "storage_bucket": "ibdf-61604.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861669867723:android:b2c703ac26b36130121b4e",
+        "android_client_info": {
+          "package_name": "com.example.app_ibdf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861669867723-ogialjprb735uic0re7g20tv811ju4k2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ1f2WXZ2n7HBSzeN5om124m61GKEYeEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861669867723-ogialjprb735uic0re7g20tv811ju4k2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
