@@ -1,14 +1,15 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Notification {
   final String title;
   final String description;
+  final String topic;
 
   static Notification fromSnapshot(DocumentSnapshot snap) {
     Notification notification = Notification(
       title: snap["title"],
       description: snap["description"],
+      topic:  snap["topic"],
     );
     return notification;
   }
@@ -16,28 +17,6 @@ class Notification {
   Notification({
     required this.title,
     required this.description,
+    required this.topic
   });
 }
-
-List<Notification> notifications = [
-  Notification(
-    title: "Culto Terça",
-    description: "Venha para o culto",
-  ),
-  Notification(
-    title: "Culto Segunda",
-    description: "Venha para o culto",
-  ),
-  Notification(
-    title: "Culto Quinta",
-    description: "Venha para o culto",
-  ),
-  Notification(
-    title: "Culto Sábado",
-    description: "Venha para o culto",
-  ),
-  Notification(
-    title: "Culto Terça",
-    description: "Venha para o culto",
-  ),
-];

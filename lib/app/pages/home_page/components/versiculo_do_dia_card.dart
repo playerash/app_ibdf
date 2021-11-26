@@ -72,9 +72,9 @@
 //   }
 // }
 
-import 'package:app_ibdf/app/pages/home_page/versiculo_do_dia_bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_ibdf/app/blocs/versiculo_do_dia/versiculododia_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VersiculoDoDiaCard extends StatelessWidget {
   const VersiculoDoDiaCard({
@@ -83,16 +83,7 @@ class VersiculoDoDiaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = VersiculoBloc();
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    Future<DocumentSnapshot> getVersiculoInfo() async {
-      DocumentSnapshot versiculoFirebase =
-          await firestore.collection("versiculos").doc("1").get();
-      return versiculoFirebase;
-    }
-
-    //bloc.add(getVersiculoInfo())
+   
 
     return Center(
       child: Container(
@@ -102,20 +93,16 @@ class VersiculoDoDiaCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(6),
           color: Colors.white,
         ),
-        child: FutureBuilder(
-          future: getVersiculoInfo(),
-          builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-            if (snapshot.connectionState != ConnectionState.done) {
+        child: BlocBuilder<VersiculoDoDiaBloc, VersiculoDoDiaState>(
+          builder: (context, state) {
+            if (state is VersiculododiaLoading) {
               return const Center(
-                child: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: CircularProgressIndicator(),
-                ),
+                child: CircularProgressIndicator(),
               );
-            } else {
+            }
+            if (state is VersiculoDoDiaLoaded) {
               String title =
-                  "${snapshot.data?.get("livro")} ${snapshot.data?.get("capitulo")}:${snapshot.data?.get("versiculo")}";
+                  "${state.versiculoDoDia.livro} ${state.versiculoDoDia.capitulo}:${state.versiculoDoDia.versiculo}";
 
               return Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -132,7 +119,7 @@ class VersiculoDoDiaCard extends StatelessWidget {
                     Wrap(
                       children: [
                         Text(
-                          snapshot.data?.get("textoVersiculo"),
+                          state.versiculoDoDia.textoVersiculo,
                           style: const TextStyle(
                             fontSize: 14,
                           ),
@@ -143,6 +130,7 @@ class VersiculoDoDiaCard extends StatelessWidget {
                 ),
               );
             }
+            return const Text("Deu algo errado");
           },
         ),
       ),
