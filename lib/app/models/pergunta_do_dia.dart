@@ -14,18 +14,16 @@ class PerguntaDoDia {
     required this.opcao3,
     required this.opcao4,
   });
-
-
 }
 
 class Opcao {
   final String resposta;
   bool isCorreta = false;
-  
-  Color getColor(){
-    if(isCorreta){
+
+  Color getColor() {
+    if (isCorreta) {
       return const Color(0xffBEFF9F);
-    }else{
+    } else {
       return const Color(0xffFF8989);
     }
   }
@@ -35,4 +33,3 @@ class Opcao {
     required this.resposta,
   });
 }
-

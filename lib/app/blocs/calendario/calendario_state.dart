@@ -12,7 +12,7 @@ class CalendarioLoading extends CalendarioState {}
 class CalendarioLoaded extends CalendarioState {
   final List<Events> events;
 
-  CalendarioLoaded({this.events = const <Events>[]});
+  const CalendarioLoaded({this.events = const <Events>[]});
   @override
   List<Object> get props => [events];
 }

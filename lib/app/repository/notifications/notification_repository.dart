@@ -3,7 +3,7 @@ import 'package:app_ibdf/app/repository/notifications/base_notification_reposito
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NotificationRepository extends BaseNotificationRepository {
-  FirebaseFirestore _firebaseFirestore;
+  final FirebaseFirestore _firebaseFirestore;
   NotificationRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
   @override

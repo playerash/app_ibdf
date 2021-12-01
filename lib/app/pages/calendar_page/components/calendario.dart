@@ -14,6 +14,7 @@ class _CalendarioState extends State<Calendario> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
+  
 
   List<Events> _getEventsFromDay(DateTime date) {
     return widget.selectedEvents[date] ?? [];
@@ -21,64 +22,62 @@ class _CalendarioState extends State<Calendario> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TableCalendar(
-          availableCalendarFormats: const {
-            CalendarFormat.month : "Mês",
-            CalendarFormat.twoWeeks: "2 Semanas",
-            CalendarFormat.week: "Uma Semana",
-          },
-          
-          locale: 'pt_br',
-          focusedDay: _focusedDay,
-          firstDay: DateTime.utc(2010),
-          lastDay: DateTime.utc(2030),
-          eventLoader: (DateTime date) {
-            return widget.selectedEvents[date] ?? [];
-          },
-          onPageChanged: (focusedDay) {
-            _focusedDay = focusedDay;
-          },
-          selectedDayPredicate: (day) {
-            return isSameDay(_selectedDay, day);
-          },
-          onDaySelected: (selectedDay, focusedDay) {
-            setState(() {
-              _selectedDay = selectedDay;
-              _focusedDay = focusedDay; // update `_focusedDay` here as well
-            });
-          },
-          calendarFormat: _calendarFormat,
-          onFormatChanged: (format) {
-            print(format);
-            setState(() {
-              _calendarFormat = format;
-            });
-          },
-        ),
-        SingleChildScrollView(
-          child: Column(
-            children: [
- ..._getEventsFromDay(_selectedDay).map(
-          (Events event) => Column(
-            children: [
-              Text(
-                event.title,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          TableCalendar(
+            availableCalendarFormats: const {
+              CalendarFormat.month : "Mês",
+              CalendarFormat.twoWeeks: "2 Semanas",
+              CalendarFormat.week: "Uma Semana",
+            },
+            
+            locale: 'pt_br',
+            focusedDay: _focusedDay,
+            firstDay: DateTime.utc(2010),
+            lastDay: DateTime.utc(2030),
+            eventLoader: _getEventsFromDay,
+            onPageChanged: (focusedDay) {
+              setState(() {
+                _focusedDay = focusedDay;
+              });
+            },
+            selectedDayPredicate: (day) {
+              return isSameDay(_selectedDay, day);
+            },
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            },
+            calendarFormat: _calendarFormat,
+            onFormatChanged: (format) {
+              setState(() {
+                _calendarFormat = format;
+              });
+            },
+          ),
+          const SizedBox(height: 50),
+     
+     ..._getEventsFromDay(_focusedDay).map(
+            (Events event) => Column(
+              children: [
+                Text(
+                  event.title,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const Divider()
-            ],
-          ),
-        ).toList()
-            ],
-          ),
-        ),
-       
-      ],
+                const Divider()
+              ],
+            ),
+          ).toList()
+          
+         
+        ],
+      ),
     );
   }
 }

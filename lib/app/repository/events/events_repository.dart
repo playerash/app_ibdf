@@ -3,7 +3,7 @@ import 'package:app_ibdf/app/repository/events/base_events_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventsRepository extends BaseEventsRepository {
-  FirebaseFirestore _firebaseFirestore;
+  final FirebaseFirestore _firebaseFirestore;
   EventsRepository({FirebaseFirestore? firebaseFirestore})
       : _firebaseFirestore = firebaseFirestore ?? FirebaseFirestore.instance;
 

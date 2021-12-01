@@ -12,7 +12,7 @@ class VersiculododiaLoading extends VersiculoDoDiaState {}
 class VersiculoDoDiaLoaded extends VersiculoDoDiaState {
   final VersiculoDoDia versiculoDoDia;
 
-  VersiculoDoDiaLoaded(this.versiculoDoDia);
+  const VersiculoDoDiaLoaded(this.versiculoDoDia);
   @override
   List<Object> get props => [versiculoDoDia];
 }

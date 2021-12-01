@@ -18,7 +18,7 @@ class _PerguntaDoDiaCardState extends State<PerguntaDoDiaCard> {
     return Center(
       child: Container(
         constraints:
-            const BoxConstraints(minHeight: 250, minWidth: 270, maxWidth: 270),
+            const BoxConstraints(minHeight: 350, minWidth: 270, maxWidth: 270),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           color: Colors.white,
@@ -27,11 +27,7 @@ class _PerguntaDoDiaCardState extends State<PerguntaDoDiaCard> {
                     builder: (context, state) {
             if (state is PerguntasLoading) {
               return const Center(
-                child: SizedBox(
-                  //height: 50,
-                  //width: 50,
-                  child: CircularProgressIndicator(),
-                ),
+                child: CircularProgressIndicator(),
               );
             }
             if (state is PerguntasLoaded) {

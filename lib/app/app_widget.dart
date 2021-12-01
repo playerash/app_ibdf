@@ -50,7 +50,6 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          //iconTheme: IconThemeData(color: Color(0xFFE0B723)),
           inputDecorationTheme: kDefaultInputDecorationTheme,
         ),
         home: const SplashScreen(),

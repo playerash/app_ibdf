@@ -18,15 +18,16 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Wrap(
             children: [
               Text(
                 widget.perguntaDoDia.pergunta,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -35,8 +36,8 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              height: 45,
-              width: 150,
+              height: 50,
+              width: 200,
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -48,18 +49,6 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
                   setState(() {
                     buttonColor1 = widget.perguntaDoDia.opcao1.getColor();
                   });
-
-                  if (widget.perguntaDoDia.opcao2.isCorreta) {
-                    setState(() {
-                      buttonColor2 = widget.perguntaDoDia.opcao2.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao3.isCorreta) {
-                    setState(() {
-                      buttonColor3 = widget.perguntaDoDia.opcao3.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao4.isCorreta) {
-                    buttonColor4 = widget.perguntaDoDia.opcao4.getColor();
-                  }
                 },
                 child: Text(widget.perguntaDoDia.opcao1.resposta),
               ),
@@ -68,8 +57,8 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              height: 45,
-              width: 150,
+              height: 50,
+              width: 200,
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -81,18 +70,6 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
                   setState(() {
                     buttonColor2 = widget.perguntaDoDia.opcao2.getColor();
                   });
-
-                  if (widget.perguntaDoDia.opcao1.isCorreta) {
-                    setState(() {
-                      buttonColor1 = widget.perguntaDoDia.opcao1.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao3.isCorreta) {
-                    setState(() {
-                      buttonColor3 = widget.perguntaDoDia.opcao3.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao4.isCorreta) {
-                    buttonColor4 = widget.perguntaDoDia.opcao4.getColor();
-                  }
                 },
                 child: Text(widget.perguntaDoDia.opcao2.resposta),
               ),
@@ -101,8 +78,8 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              height: 45,
-              width: 150,
+              height: 50,
+              width: 200,
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -114,18 +91,6 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
                   setState(() {
                     buttonColor3 = widget.perguntaDoDia.opcao3.getColor();
                   });
-
-                  if (widget.perguntaDoDia.opcao2.isCorreta) {
-                    setState(() {
-                      buttonColor2 = widget.perguntaDoDia.opcao2.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao1.isCorreta) {
-                    setState(() {
-                      buttonColor1 = widget.perguntaDoDia.opcao1.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao4.isCorreta) {
-                    buttonColor4 = widget.perguntaDoDia.opcao4.getColor();
-                  }
                 },
                 child: Text(widget.perguntaDoDia.opcao3.resposta),
               ),
@@ -134,8 +99,8 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: SizedBox(
-              height: 45,
-              width: 150,
+              height: 50,
+              width: 200,
               child: TextButton(
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -147,18 +112,6 @@ class _InfoCardPerguntaState extends State<InfoCardPergunta> {
                   setState(() {
                     buttonColor4 = widget.perguntaDoDia.opcao4.getColor();
                   });
-
-                  if (widget.perguntaDoDia.opcao2.isCorreta) {
-                    setState(() {
-                      buttonColor2 = widget.perguntaDoDia.opcao2.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao3.isCorreta) {
-                    setState(() {
-                      buttonColor3 = widget.perguntaDoDia.opcao3.getColor();
-                    });
-                  } else if (widget.perguntaDoDia.opcao1.isCorreta) {
-                    buttonColor1 = widget.perguntaDoDia.opcao1.getColor();
-                  }
                 },
                 child: Text(widget.perguntaDoDia.opcao4.resposta),
               ),

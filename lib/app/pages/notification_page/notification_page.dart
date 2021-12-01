@@ -1,7 +1,6 @@
 import 'package:app_ibdf/app/blocs/notification/notification_bloc.dart';
 import 'package:app_ibdf/app/pages/calendar_page/calendar_page.dart';
 import 'package:app_ibdf/app/pages/notification_page/components/notification_card.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,14 +24,13 @@ class _NotificationPageState extends State<NotificationPage> {
   _registerOnFirebase() {
     firebaseMessaging.subscribeToTopic('all');
     firebaseMessaging.subscribeToTopic(widget.localIgreja.replaceAll(" ", "_"));
-    firebaseMessaging.getToken().then((value) => print(value));
   }
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     _registerOnFirebase();
+    super.initState();
+
   }
 
   @override
@@ -67,7 +65,6 @@ class _NotificationPageState extends State<NotificationPage> {
           ),
         ],
         backgroundColor: kColorAzulPrincipal,
-        //leading: InkWell(child: Image.asset("assets/images/logo.png")),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -81,7 +78,7 @@ class _NotificationPageState extends State<NotificationPage> {
             if (state is NotificationLoaded) {
               List<Widget> notifications = [];
               state.notifications.map((doc) {       
-                if (doc.topic == widget.localIgreja) {
+                if (doc.topic == widget.localIgreja || doc.topic == "all") {
                   notifications.add(NotificationCard(
                     title: doc.title,
                     description: doc.description,

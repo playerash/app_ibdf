@@ -10,8 +10,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
   String? selectedCity = "Santa Cruz";
+
   @override
   Widget build(BuildContext context) {
     var _currencies = [
@@ -34,8 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 300,
               child: DropdownButtonFormField(
                 dropdownColor: kColorAzulPrincipal,
-                style: TextStyle(
-                  //fontSize: 16,
+                style: const TextStyle(
                   color: Colors.white,
                 ),
                 items: _currencies.map((String category) {
@@ -45,7 +44,6 @@ class _SplashScreenState extends State<SplashScreen> {
                   );
                 }).toList(),
                 onChanged: (String? newValue) {
-                  print(newValue);
                   selectedCity = newValue;
                 },
                 value: selectedCity,
@@ -57,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     )),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: kColorAmareloPrincipal
@@ -70,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   );
                 },
-                child: Text("Continuar"))
+                child: const Text("Continuar"))
           ],
         ),
       ),
